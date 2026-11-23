@@ -39,7 +39,7 @@ jobs:
         if: steps.prerun.outputs.result == 'pex-deploy'
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
-          ref: ${{ github.head_ref }}
+          ref: ${{ github.sha }}
           path: project-repo
 
       - name: Python Executable Deploy
@@ -65,7 +65,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
-          ref: ${{ github.head_ref }}
+          ref: ${{ github.sha }}
       - name: Build and deploy to Dagster Cloud serverless
         uses: dagster-io/dagster-cloud-action/actions/serverless_prod_deploy@v1.13.31
         with:
