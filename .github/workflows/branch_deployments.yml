@@ -31,7 +31,7 @@ jobs:
         id: parse-workspace
         uses: dagster-io/dagster-cloud-action/actions/utils/parse_workspace@v1.13.31
         with:
-          dagster_cloud_file: ${{ env.DAGSTER_CLOUD_FILE }}
+          dagster_cloud_file: $DAGSTER_CLOUD_FILE
 
       - name: Checkout for Python Executable Deploy
         if: steps.prerun.outputs.result == 'pex-deploy'
@@ -44,8 +44,8 @@ jobs:
         if: steps.prerun.outputs.result == 'pex-deploy'
         uses: dagster-io/dagster-cloud-action/actions/build_deploy_python_executable@v1.13.31
         with:
-          dagster_cloud_file: ${{ github.workspace }}/project-repo/${{ env.DAGSTER_CLOUD_FILE }}
-          build_output_dir: ${{ github.workspace }}/build
+          dagster_cloud_file: "$GITHUB_WORKSPACE/project-repo/$DAGSTER_CLOUD_FILE"
+          build_output_dir: "$GITHUB_WORKSPACE/build"
           python_version: "${{ env.PYTHON_VERSION }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
