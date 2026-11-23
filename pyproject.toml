@@ -67,3 +67,7 @@ fixable = ["ALL"]
 unfixable = [
     "F401", # dont remove unused imports
 ]
+
+
+[tool.hatch.build.targets.wheel.force-include]
+"pyproject.toml" = "pyproject.toml"
